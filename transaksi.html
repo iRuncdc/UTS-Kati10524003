@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Transaksi Pembelian - Toko Baju</title>
+</head>
+<body bgcolor="#1e1e1e" text="white" style="margin: 0; height: 100vh;">
+  <table width="100%" border="1" bgcolor="white">
+    <tr>
+      <td align="center" colspan="3">
+        <font color="black" size="6"><b>TOKO BAJU</b></font>
+      </td>
+    </tr>
+    <tr align="center" bgcolor="white">
+      <td><a href="index.html" style="text-decoration:none;"><font color="black"><b>HOME</b></font></a></td>
+      <td><a href="transaksi.html" style="text-decoration:none;"><font color="black"><b>TRANSAKSI</b></font></a></td>
+      <td><a href="tentang.html" style="text-decoration:none;"><font color="black"><b>TENTANG</b></font></a></td>
+    </tr>
+  </table>
+
+  <table width="100%" height="100%">
+    <tr valign="top">
+        <!--sidebar-->
+      <td width="20%" bgcolor="#333333">
+        <br>
+        <font size="4"><b>kategori</b></font>
+        <ul>
+          <li><a href="index.html" style="text-decoration:none;"><font color="white"><b>HOME</b></font></a></li>
+          <li><a href="transaksi.html" style="text-decoration:none;"><font color="white"><b>TRANSAKSI</b></font></a></li>
+          <li><a href="tentang.html" style="text-decoration:none;"><font color="white"><b>TENTANG</b></font></a></li>
+        </ul>
+      </td>
+
+      <!--Form-->
+      <td bgcolor="#111111" style="padding: 20px;">
+        <h2 align="center">Formulir Transaksi Pembelian</h2>
+        <hr>
+        <form action="#" method="post">
+          <fieldset style="border:1px solid white; padding:10px;">
+            <legend><b>Informasi Pembeli</b></legend>
+            <table cellpadding="8">
+              <tr>
+                <td>Nama Lengkap</td>
+                <td><input type="text" name="nama" placeholder="Masukkan nama Anda" size="30" required></td>
+              </tr>
+              <tr>
+                <td>Alamat</td>
+                <td><textarea name="alamat" rows="3" cols="30" placeholder="Tulis alamat lengkap..."></textarea></td>
+              </tr>
+              <tr>
+                <td>No. HP</td>
+                <td><input type="text" name="telepon" placeholder="08xxxxxxxxxx"></td>
+              </tr>
+            </table>
+          </fieldset>
+
+          <br>
+
+          <fieldset style="border:1px solid white; padding:10px;">
+            <legend><b>Detail Pembelian</b></legend>
+            <table cellpadding="8">
+              <tr>
+                <td>Jenis Barang</td>
+                <td>
+                  <select name="barang">
+                    <option value="">-- Pilih Barang --</option>
+                    <option value="kaos">Kaos Polos</option>
+                    <option value="kemeja">Kemeja</option>
+                    <option value="jaket">Jaket</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>Jumlah</td>
+                <td><input type="number" name="jumlah" min="1" max="100"></td>
+              </tr>
+              <tr>
+                <td>Ukuran</td>
+                <td>
+                  <input type="radio" name="ukuran" value="S"> S
+                  <input type="radio" name="ukuran" value="M"> M
+                  <input type="radio" name="ukuran" value="L"> L
+                  <input type="radio" name="ukuran" value="XL"> XL
+                </td>
+              </tr>
+              <tr>
+                <td>Pembayaran</td>
+                <td>
+                  <input type="checkbox" name="bayar" value="transfer"> Transfer Bank<br>
+                  <input type="checkbox" name="bayar" value="cod"> COD<br>
+                  <input type="checkbox" name="bayar" value="ewallet"> E-Wallet
+                </td>
+              </tr>
+            </table>
+          </fieldset>
+
+          <br>
+
+          <table width="100%">
+            <tr>
+              <td align="center">
+                <input type="submit" value="Kirim" style="padding: 8px;">
+                <input type="reset" value="Reset" style="padding: 8px;">
+              </td>
+            </tr>
+          </table>
+        </form>
+      </td>
+    </tr>
+  </table>
+
+
+  <table width="100%" border="1" bgcolor="white">
+    <tr>
+      <td align="center">
+        <font color="black"><b>10524003_HARUNARROSYD</b></font>
+      </td>
+    </tr>
+  </table>
+
+</body>
+</html>
