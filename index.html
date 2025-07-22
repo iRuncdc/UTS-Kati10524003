@@ -44,23 +44,18 @@
             <td bgcolor="#222222" align="center" style="border: 1px solid white; ">
               <img src="https://images.tokopedia.net/img/cache/900/VqbcmM/2022/9/22/dbf1a680-c812-4ea8-9064-eefb8f9f8cd0.jpg" alt="Kaos Polos" style="width: 15em; height: 15em;" ><br>
               <b>kaos polos murah!!!</b><br>Rp.40.000<br><br>
-              <button style="background-color:black; color:white; border:1px solid white;"><b>
-                <a href="transaksi.html" style="color: white;text-decoration:none;"">Beli</a>
-              </b></button>
+              <button class="beliBtn" data-nama="Kaos polos" data-harga="40000" style="background-color:black; color:white; border:1px solid white;">
+              <b>Beli</b>
+              </button>
             </td>
-            <td bgcolor="#222222" align="center" style="border: 1px solid white;">
-              <img src="https://images.tokopedia.net/img/cache/900/product-1/2018/11/21/40367564/40367564_3796e659-d7d1-47b5-8d10-f6cb5ca5ca89_1800_1800.jpg" alt="Kaos Polos" style="width: 15em; height: 15em;"><br>
-              <b>kemeja murah!!!</b><br>Rp.120.000<br><br>
-              <button style="background-color:black; color:white; border:1px solid white;"><b>
-                <a href="transaksi.html" style="color: white;text-decoration:none;">Beli</a>
-              </b></button>
+            
             </td>
             <td bgcolor="#222222" align="center" style="border: 1px solid white;">
               <img src="https://images.tokopedia.net/img/cache/900/VqbcmM/2024/5/22/39933266-3ed6-4e78-b98e-449d3ddee4f8.jpg" alt="Kaos Polos" style="width: 15em; height: 15em;"><br>
               <b>jaket smith murah!!</b><br>Rp.150.000<br><br>
-              <button style="background-color:black; color:white; border:1px solid white;"><b>
-                <a href="transaksi.html" style="color: white;text-decoration:none;">Beli</a>
-              </b></button>
+              <button class="beliBtn" data-nama="jaket smith" data-harga="150000" style="background-color:black; color:white; border:1px solid white;">
+                <b>Beli</b>
+                </button>
             </td>
           </tr>
         </table>
@@ -77,3 +72,17 @@
   </table>
 </body>
 </html>
+
+<script>
+  // Tangkap semua tombol dengan class beliBtn
+  document.querySelectorAll('.beliBtn').forEach(function(button) {
+      button.addEventListener('click', function() {
+          const produk = {
+              nama: this.getAttribute('data-nama'),
+              harga: parseInt(this.getAttribute('data-harga'))
+          };
+          localStorage.setItem('produk', JSON.stringify(produk));
+          window.location.href = 'transaksi.html';
+      });
+  });
+</script>

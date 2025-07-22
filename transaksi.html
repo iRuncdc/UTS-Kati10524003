@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
+    <meta charset="UTF-8">
   <meta charset="UTF-8">
   <title>Transaksi Pembelian - Toko Baju</title>
+
 </head>
 <body bgcolor="#1e1e1e" text="white" style="margin: 0; height: 100vh;">
   <table width="100%" border="1" bgcolor="white">
@@ -35,7 +37,7 @@
       <td bgcolor="#111111" style="padding: 20px;">
         <h2 align="center">Formulir Transaksi Pembelian</h2>
         <hr>
-        <form action="#" method="post">
+        <form id="formTransaksi" method="post" >
           <fieldset style="border:1px solid white; padding:10px;">
             <legend><b>Informasi Pembeli</b></legend>
             <table cellpadding="8">
@@ -55,7 +57,7 @@
           </fieldset>
 
           <br>
-
+         
           <fieldset style="border:1px solid white; padding:10px;">
             <legend><b>Detail Pembelian</b></legend>
             <table cellpadding="8">
@@ -63,10 +65,7 @@
                 <td>Jenis Barang</td>
                 <td>
                   <select name="barang">
-                    <option value="">-- Pilih Barang --</option>
-                    <option value="kaos">Kaos Polos</option>
-                    <option value="kemeja">Kemeja</option>
-                    <option value="jaket">Jaket</option>
+                    <option value="kaos" id="produkInfo"></option>
                   </select>
                 </td>
               </tr>
@@ -77,29 +76,27 @@
               <tr>
                 <td>Ukuran</td>
                 <td>
-                  <input type="radio" name="ukuran" value="S"> S
-                  <input type="radio" name="ukuran" value="M"> M
-                  <input type="radio" name="ukuran" value="L"> L
-                  <input type="radio" name="ukuran" value="XL"> XL
+                  <input type="radio" name="size" value="S" required> S
+                  <input type="radio" name="size" value="M"> M
+                  <input type="radio" name="size" value="L"> L
+                  <input type="radio" name="size" value="XL"> XL
                 </td>
               </tr>
               <tr>
                 <td>Pembayaran</td>
                 <td>
-                  <input type="checkbox" name="bayar" value="transfer"> Transfer Bank<br>
-                  <input type="checkbox" name="bayar" value="cod"> COD<br>
-                  <input type="checkbox" name="bayar" value="ewallet"> E-Wallet
+                  <input type="checkbox" name="bayar" value="Transfer Bank"> Transfer Bank<br>
+                  <input type="checkbox" name="bayar" value="Cash On Delivery (COD)"> COD <br>
+                  <input type="checkbox" name="bayar" value="E-Wallet"> E-Wallet
                 </td>
               </tr>
             </table>
           </fieldset>
-
           <br>
-
           <table width="100%">
             <tr>
               <td align="center">
-                <input type="submit" value="Kirim" style="padding: 8px;">
+                 <button type="submit" style="padding: 8px;">Proses</button>
                 <input type="reset" value="Reset" style="padding: 8px;">
               </td>
             </tr>
@@ -120,3 +117,43 @@
 
 </body>
 </html>
+
+<script>
+  // Tampilkan produk yang dipilih
+  const produk = JSON.parse(localStorage.getItem('produk'));
+  if (produk) {
+      document.getElementById('produkInfo').innerHTML = `
+          <p>Produk: ${produk.nama}</p>
+          <p>Harga: Rp ${produk.harga.toLocaleString('id-ID')}</p>
+      `;
+  } else {
+      document.getElementById('produkInfo').innerHTML = "Tidak ada produk dipilih.";
+  }
+
+  document.getElementById('formTransaksi').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const nama = this.nama.value;
+      const alamat = this.alamat.value;
+      const jumlah = parseInt(this.jumlah.value);
+      const bayar = [];
+      document.querySelectorAll('input[name="bayar"]:checked').forEach(function(cb) {
+        bayar.push(cb.value);
+      });
+      const size = [];
+      document.querySelectorAll('input[name="size"]:checked').forEach(function(cb) {
+          size.push(cb.value);
+      });
+
+      const transaksi = {
+          produk: produk,
+          nama: nama,
+          alamat: alamat,
+          jumlah: jumlah,
+          bayar: bayar,
+          size: size
+      };
+
+      localStorage.setItem('transaksi', JSON.stringify(transaksi));
+      window.location.href = 'invoice.html';
+  });
+</script>
